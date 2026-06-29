@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6f7f4" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Standortleitung" />
+  <title>Operative Steuerung · Standortleitung</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="logo-download/standortleitung-app-icon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/app-icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css?v=20260608-meeting-archive" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="side-nav" aria-label="Hauptnavigation">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg class="brand-logo" viewBox="0 0 96 96" role="img" aria-label="Logo Operative Steuerung Standortleitung">
+            <rect class="logo-shell" width="96" height="96" rx="20" />
+            <rect class="logo-soft" x="6" y="6" width="84" height="84" rx="18" />
+            <path class="logo-car" d="M20 58h8l7-15c2-4 5-6 10-6h15c5 0 8 2 11 6l7 15h3c3 0 5 2 5 5v8H10v-8c0-3 2-5 5-5h5Z" />
+            <path class="logo-window" d="M37 44h23c3 0 5 1 7 4l4 9H28l4-9c1-3 3-4 5-4Z" />
+            <path class="logo-glass" d="M40 47h9v8H34l3-6c1-1 2-2 3-2Zm15 0h7c1 0 3 1 4 2l3 6H55v-8Z" />
+            <circle class="logo-wheel" cx="29" cy="70" r="8" />
+            <circle class="logo-hub" cx="29" cy="70" r="3" />
+            <circle class="logo-wheel" cx="68" cy="70" r="8" />
+            <circle class="logo-hub" cx="68" cy="70" r="3" />
+            <path class="logo-line" d="M21 58h57" />
+            <path class="logo-accent" d="M21 27h18" />
+            <path class="logo-detail" d="M21 37h10" />
+          </svg>
+        </div>
+        <div>
+          <strong>Operative Steuerung</strong>
+          <span>Standortleitung</span>
+        </div>
+      </div>
+      <nav id="main-nav" class="nav-list"></nav>
+      <button id="install-button" class="nav-cta" type="button" hidden>Installieren</button>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div>
+          <h1 id="view-title">Startseite</h1>
+          <p><span id="date-label">Betriebssteuerung</span></p>
+        </div>
+        <div class="top-actions">
+          <button id="sync-button" class="primary-button" type="button">Google synchronisieren</button>
+        </div>
+      </header>
+
+      <main>
+        <section id="home-view" class="view active" aria-labelledby="view-title">
+          <div class="home-landing">
+            <figure class="home-daily-quote home-daily-quote-top" aria-label="Management-Spruch des Tages">
+              <figcaption>Spruch des Tages</figcaption>
+              <blockquote id="home-quote-text">Wird geladen ...</blockquote>
+              <footer>
+                <span id="home-quote-author">Management-Impuls</span>
+                <a id="home-quote-source" href="https://theysaidso.com/quote-of-the-day/management" target="_blank" rel="noopener">Quelle</a>
+              </footer>
+            </figure>
+
+            <section class="home-hero">
+              <div class="home-hero-copy">
+                <p class="home-eyebrow">Standortleitung im Autohaus</p>
+                <h2>Ein guter Tag braucht Übersicht.</h2>
+                <p>Ein ruhiger Einstieg für die operative Steuerung: Tagesrhythmus erkennen, Prioritäten setzen und dann gezielt in Tagesplan, KPIs oder Maßnahmen wechseln.</p>
+              </div>
+            </section>
+
+            <section class="home-focus-grid" aria-label="Führungsübersicht">
+              <article class="home-focus-card">
+                <span>01</span>
+                <h3>Früh sehen</h3>
+                <p>Hof, Showroom, Werkstatt, Sicherheit und Fahrzeugpräsentation mit wachem Blick prüfen.</p>
+              </article>
+              <article class="home-focus-card accent">
+                <span>02</span>
+                <h3>Im Takt bleiben</h3>
+                <p>Kurzmeetings, Entscheidungen und offene Punkte so führen, dass der Betrieb in Bewegung bleibt.</p>
+              </article>
+              <article class="home-focus-card">
+                <span>03</span>
+                <h3>Sauber landen</h3>
+                <p>Den Tag abschließen, Morgen vorbereiten und Eskalationen sichtbar nachhalten.</p>
+              </article>
+            </section>
+
+            <section class="home-content-grid">
+              <div class="home-panel">
+                <div class="section-heading">
+                  <div>
+                    <h2>Tagesroute</h2>
+                    <span>Der operative Rhythmus auf einen Blick</span>
+                  </div>
+                </div>
+                <div class="home-day-route">
+                  <div><time>07:30</time><strong>Frühe Lage</strong><span>Serviceannahme, Teile, Hof und Werkstatt startklar</span></div>
+                  <div><time>07:45</time><strong>Service/Werkstatt</strong><span>Auslastung, Fehlteile, Fertigstellungen</span></div>
+                  <div><time>08:30</time><strong>Verkauf</strong><span>Leads, Termine, Auslieferungen</span></div>
+                  <div><time>08:45</time><strong>Zahlen</strong><span>DMS, Umsatz, DB, offene Punkte</span></div>
+                  <div><time>17:00</time><strong>Abschluss</strong><span>Morgenplanung und Nachverfolgung</span></div>
+                </div>
+              </div>
+
+              <aside class="home-panel home-side-panel">
+                <div>
+                  <h2>Schnell weiter</h2>
+                  <p>Direkt in die wichtigsten Arbeitsbereiche springen.</p>
+                  <div class="home-quick-links" aria-label="Schnellzugriff">
+                    <button type="button" data-view="today-view" data-label="Heute">
+                      <span>Heute</span>
+                      <small>Tagesplan öffnen</small>
+                    </button>
+                    <button type="button" data-view="board-view" data-label="To-do-Board">
+                      <span>To-do-Board</span>
+                      <small>Aufgaben sortieren</small>
+                    </button>
+                    <button type="button" data-view="actions-view" data-label="Maßnahmen">
+                      <span>Maßnahmen</span>
+                      <small>Nachverfolgung prüfen</small>
+                    </button>
+                    <button type="button" data-view="monitor-view" data-label="Monitor">
+                      <span>Monitor</span>
+                      <small>KPI-Lage ansehen</small>
+                    </button>
+                  </div>
+                </div>
+                <div class="home-mini-metrics">
+                  <span><strong>10</strong> Tagesblöcke</span>
+                  <span><strong>4</strong> Führungsbereiche</span>
+                  <span><strong>1</strong> klare Linie</span>
+                </div>
+              </aside>
+            </section>
+          </div>
+        </section>
+
+        <section id="today-view" class="view" aria-labelledby="view-title">
+          <div class="kpi-strip" id="daily-kpis"></div>
+          <div class="today-layout">
+            <section class="panel timeline-panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Tagesplan</h2>
+                  <span id="progress-label">0 erledigt</span>
+                </div>
+                <button id="reset-day-button" class="ghost-button" type="button">Tag zurücksetzen</button>
+              </div>
+              <div id="timeline" class="timeline"></div>
+            </section>
+
+            <section class="panel checklist-panel">
+              <div class="section-heading">
+                <div>
+                  <h2 id="active-block-title">Aktueller Block</h2>
+                  <span id="active-block-time">Heute</span>
+                </div>
+              </div>
+              <div id="active-checklist" class="checklist"></div>
+              <label class="notes-field">Notiz / Eskalation
+                <textarea id="daily-note" rows="4" placeholder="Kurz notieren, was nachverfolgt werden muss"></textarea>
+              </label>
+            </section>
+
+            <aside class="panel google-panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Google heute</h2>
+                  <span id="google-status">lokal bereit</span>
+                </div>
+              </div>
+              <div class="mini-form">
+                <input id="quick-title" type="text" placeholder="Termin oder To-do" />
+                <div class="time-input-row">
+                  <input id="quick-start" type="time" value="09:00" aria-label="Startzeit" />
+                  <input id="quick-end" type="time" value="09:30" aria-label="Endzeit" />
+                </div>
+                <div class="split-controls">
+                  <button id="add-calendar-button" class="ghost-button" type="button">Kalender</button>
+                  <button id="add-task-button" class="ghost-button" type="button">To-do</button>
+                </div>
+                <div id="quick-save-feedback" class="quick-save-feedback" role="status" aria-live="polite"></div>
+              </div>
+              <div class="google-lists">
+                <div>
+                  <h3>Kalender</h3>
+                  <div id="calendar-list" class="compact-list"></div>
+                </div>
+                <div>
+                  <h3>To-dos</h3>
+                  <div id="task-list" class="compact-list"></div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="meetings-view" class="view">
+          <div id="meeting-kpis" class="kpi-strip"></div>
+
+          <section class="panel meeting-create-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Meeting vorbereiten</h2>
+                <span>Vorlage wählen, Team zusammenstellen und direkt loslegen</span>
+              </div>
+            </div>
+            <form id="meeting-form" class="meeting-form">
+              <label>Vorlage
+                <select id="meeting-template"></select>
+              </label>
+              <label>Titel
+                <input id="meeting-title" type="text" placeholder="Besprechungstitel" required />
+              </label>
+              <label>Bereich
+                <select id="meeting-area"></select>
+              </label>
+              <label>Datum
+                <input id="meeting-date" type="date" required />
+              </label>
+              <label>Start
+                <input id="meeting-start" type="time" value="08:00" required />
+              </label>
+              <label>Ende
+                <input id="meeting-end" type="time" value="08:20" required />
+              </label>
+              <label>Moderation
+                <select id="meeting-moderator"></select>
+              </label>
+              <fieldset class="meeting-participant-field">
+                <legend>Teilnehmer</legend>
+                <div id="meeting-participants" class="meeting-participants"></div>
+              </fieldset>
+              <button class="primary-button" type="submit">Meeting anlegen</button>
+            </form>
+          </section>
+
+          <div class="meeting-workspace">
+            <section class="panel meeting-list-panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Besprechungen</h2>
+                  <span>Geplant, laufend und abgeschlossen</span>
+                </div>
+              </div>
+              <div id="meeting-list" class="meeting-list"></div>
+            </section>
+            <section class="panel meeting-detail-panel">
+              <div id="meeting-detail"></div>
+            </section>
+          </div>
+
+          <section class="panel meeting-template-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Autohaus-Vorlagen</h2>
+                <span>Bewährte Agenda für die wichtigsten Führungsroutinen</span>
+              </div>
+            </div>
+            <div id="meeting-template-board" class="meeting-template-board"></div>
+          </section>
+        </section>
+
+        <section id="meeting-archive-view" class="view">
+          <section class="panel meeting-archive-head">
+            <div class="section-heading">
+              <div>
+                <h2>Meetingarchiv</h2>
+                <span id="meeting-archive-summary">0 Besprechungen</span>
+              </div>
+            </div>
+            <div class="meeting-archive-filters">
+              <input id="meeting-archive-search" type="search" placeholder="Meeting, Bereich, Teilnehmer oder Inhalt suchen" />
+              <select id="meeting-archive-status" aria-label="Status filtern">
+                <option value="">Alle Status</option>
+                <option value="done">Abgeschlossen</option>
+                <option value="running">Laufend</option>
+                <option value="planned">Geplant</option>
+              </select>
+              <select id="meeting-archive-area" aria-label="Bereich filtern">
+                <option value="">Alle Bereiche</option>
+              </select>
+              <input id="meeting-archive-from" type="date" aria-label="Von Datum" />
+              <input id="meeting-archive-to" type="date" aria-label="Bis Datum" />
+              <button id="meeting-archive-reset" class="ghost-button" type="button">Filter zurücksetzen</button>
+            </div>
+          </section>
+          <div id="meeting-archive-list" class="meeting-archive-list"></div>
+        </section>
+
+        <section id="week-view" class="view">
+          <div id="week-board" class="plan-board"></div>
+        </section>
+
+        <section id="month-view" class="view">
+          <div id="month-board" class="plan-board"></div>
+        </section>
+
+        <section id="quarter-view" class="view">
+          <div id="quarter-board" class="plan-board"></div>
+        </section>
+
+        <section id="halfyear-view" class="view">
+          <div id="halfyear-board" class="plan-board"></div>
+        </section>
+
+        <section id="year-view" class="view">
+          <div id="year-board" class="plan-board"></div>
+        </section>
+
+        <section id="kpi-view" class="view">
+          <div class="kpi-grid" id="kpi-board"></div>
+        </section>
+
+        <section id="monitor-view" class="view">
+          <div class="monitor-hero panel">
+            <div>
+              <h2>Monatsziel-Monitor</h2>
+              <p>Zeigerstand gegen den zeitanteiligen Monatsplan: rot hinter Plan, gelb aufmerksam beobachten, grün im Soll.</p>
+            </div>
+            <div id="monitor-summary" class="monitor-summary"></div>
+          </div>
+          <div id="monitor-board" class="monitor-grid"></div>
+        </section>
+
+        <section id="sales-view" class="view">
+          <div class="sales-actions panel">
+            <div>
+              <h2>Mobile Verkäufermeldungen</h2>
+              <p id="sales-source-label">Noch nicht synchronisiert</p>
+            </div>
+            <button id="sync-sales-button" class="primary-button" type="button">Mitarbeiterdaten laden</button>
+          </div>
+          <div id="sales-kpis" class="kpi-strip"></div>
+          <div class="sales-grid">
+            <section class="panel wide-panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Zielabgleich Monat</h2>
+                  <span id="sales-month-label">Aktueller Monat</span>
+                </div>
+              </div>
+              <div id="sales-goal-board" class="seller-goal-list"></div>
+            </section>
+            <section class="panel wide-panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Tagesmeldungen</h2>
+                  <span>Alle Bereiche aus der mobilen App</span>
+                </div>
+              </div>
+              <div id="sales-table" class="data-table-wrap"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="actions-view" class="view">
+          <div class="ops-layout">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Maßnahmenplan</h2>
+                  <span>Verantwortliche, Fristen und Status</span>
+                </div>
+              </div>
+              <form id="action-form" class="ops-form">
+                <input id="action-title" type="text" placeholder="Neue Maßnahme" required />
+                <select id="action-owner" aria-label="Verantwortlich"></select>
+                <input id="action-due" type="date" aria-label="Fällig am" />
+                <select id="action-priority" aria-label="Priorität">
+                  <option value="hoch">Hoch</option>
+                  <option value="mittel" selected>Mittel</option>
+                  <option value="niedrig">Niedrig</option>
+                </select>
+                <button class="primary-button" type="submit">Anlegen</button>
+              </form>
+              <div id="action-list" class="ops-list"></div>
+            </section>
+            <aside class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Fälligkeiten</h2>
+                  <span id="action-summary">0 offen</span>
+                </div>
+              </div>
+              <div id="action-focus" class="compact-list"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="inventory-view" class="view">
+          <div id="inventory-kpis" class="kpi-strip"></div>
+          <section class="panel wide-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Fahrzeugbestand / Langsteher</h2>
+                <span>Standtage, Online-Status, Bilder, Preisabweichung</span>
+              </div>
+            </div>
+            <div id="inventory-table" class="data-table-wrap"></div>
+          </section>
+        </section>
+
+        <section id="workshop-view" class="view">
+          <div id="workshop-kpis" class="kpi-strip"></div>
+          <div class="ops-layout">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Werkstattsteuerung</h2>
+                  <span>Kapazität, Rückstände, Fehlteile, Fertigstellungen</span>
+                </div>
+              </div>
+              <div id="workshop-board" class="ops-list"></div>
+            </section>
+            <aside class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Engpässe</h2>
+                  <span>Automatisch aus Kennzahlen</span>
+                </div>
+              </div>
+              <div id="workshop-risks" class="compact-list"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="report-view" class="view">
+          <div class="ops-layout">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Automatische Eskalationen</h2>
+                  <span id="escalation-count">0 kritisch</span>
+                </div>
+                <button id="refresh-report-button" class="ghost-button" type="button">Bericht aktualisieren</button>
+              </div>
+              <div id="escalation-list" class="ops-list"></div>
+            </section>
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Wochenbericht</h2>
+                  <span>Management-Review für die Standortleitung</span>
+                </div>
+              </div>
+              <textarea id="weekly-report" class="report-output" rows="18" readonly></textarea>
+            </section>
+          </div>
+        </section>
+
+        <section id="print-view" class="view">
+          <div class="sales-actions panel">
+            <div>
+              <h2>Druck / PDF-Berichte</h2>
+              <p>Professionell formatierte Berichte für Standortleitung, Meetings und Nachverfolgung.</p>
+            </div>
+          </div>
+          <div id="print-catalog" class="report-grid"></div>
+        </section>
+
+        <section id="board-view" class="view">
+          <div class="board-create panel">
+            <div>
+              <h2>To-do-Liste</h2>
+              <p>Aktive Aufgaben erscheinen ab dem Vortag, werden nach Wichtigkeit sortiert und mit Google Tasks synchronisiert.</p>
+            </div>
+            <form id="board-form" class="board-form">
+              <input id="board-title" type="text" placeholder="Neue wichtige Aufgabe" required />
+              <select id="board-priority" aria-label="Priorität">
+                <option value="hoch">Hoch</option>
+                <option value="mittel" selected>Mittel</option>
+                <option value="niedrig">Niedrig</option>
+              </select>
+              <input id="board-due" type="date" aria-label="Fällig am" />
+              <button class="primary-button" type="submit">Hinzufügen</button>
+            </form>
+          </div>
+          <div id="todo-board" class="todo-board"></div>
+        </section>
+
+        <section id="team-view" class="view">
+          <div class="team-admin-grid">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Mitarbeiter-Stammdaten</h2>
+                  <span>Saubere Erfassung für Team, Ziele und Google-Tabelle</span>
+                </div>
+              </div>
+              <form id="team-form" class="team-form">
+                <input id="team-edit-id" type="hidden" />
+                <div class="team-form-section team-identity-fields">
+                  <label class="team-field team-field-compact">Abteilung
+                    <select id="team-area" required>
+                      <option value="Verkauf">Verkauf</option>
+                      <option value="Werkstatt">Werkstatt</option>
+                      <option value="Serviceannahme">Serviceannahme</option>
+                      <option value="Teilelager">Teilelager</option>
+                      <option value="Disposition">Disposition</option>
+                      <option value="Fahrzeugaufbereitung">Fahrzeugaufbereitung</option>
+                      <option value="Verwaltung">Verwaltung</option>
+                      <option value="Gebäude / Sicherheit / IT">Gebäude / Sicherheit / IT</option>
+                    </select>
+                  </label>
+                  <label class="team-field">Nachname
+                    <input id="team-last-name" type="text" placeholder="Nachname" required />
+                  </label>
+                  <label class="team-field">Vorname
+                    <input id="team-first-name" type="text" placeholder="Vorname" required />
+                  </label>
+                  <label class="team-field">Funktion
+                    <input id="team-role" type="text" list="role-options" placeholder="z. B. Verkäufer" required />
+                    <datalist id="role-options">
+                      <option value="Verkäufer"></option>
+                      <option value="Serviceberater"></option>
+                      <option value="Werkstattmeister"></option>
+                      <option value="Mechatroniker"></option>
+                      <option value="Lagerleiter"></option>
+                      <option value="Disposition"></option>
+                      <option value="Aufbereitung"></option>
+                      <option value="Verwaltung"></option>
+                    </datalist>
+                  </label>
+                </div>
+                <div class="team-form-section team-target-fields">
+                  <label class="team-field team-field-small">Kontaktziel/Monat
+                    <input id="team-contact-target" type="number" min="0" placeholder="optional" />
+                  </label>
+                  <label class="team-field team-field-small">Verkaufsziel/Monat
+                    <input id="team-sales-target" type="number" min="0" placeholder="optional" />
+                  </label>
+                  <div class="team-form-actions">
+                    <button class="primary-button" id="team-submit-button" type="submit">Mitarbeiter speichern</button>
+                    <button class="ghost-button" id="team-cancel-edit" type="button" hidden>Abbrechen</button>
+                  </div>
+                </div>
+              </form>
+            </section>
+            <aside class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Teamstand</h2>
+                  <span id="team-summary">0 Mitarbeiter</span>
+                </div>
+              </div>
+              <div id="team-overview" class="compact-list"></div>
+            </aside>
+          </div>
+          <div class="team-helper panel">
+            <strong>Empfohlen zum Start:</strong>
+            <span>Erfasse zuerst alle aktiven Mitarbeiter je Abteilung. Verkaufsziele kannst du direkt hier setzen; sie fließen später in Verkauf, KPIs und Monitor ein.</span>
+          </div>
+          <div class="team-grid" id="team-board"></div>
+        </section>
+
+        <section id="data-view" class="view">
+          <div class="data-admin-grid">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Datenpflege</h2>
+                  <span>Mitarbeiter, Ziele und echte Ergebnisdaten</span>
+                </div>
+              </div>
+              <div class="data-admin-tabs">
+                <button class="active" type="button" data-data-tab="employees">Mitarbeiter</button>
+                <button type="button" data-data-tab="targets">Ziele</button>
+                <button type="button" data-data-tab="kpis">KPI-Werte</button>
+                <button type="button" data-data-tab="results">Ergebnisse</button>
+                <button type="button" data-data-tab="import">Import</button>
+              </div>
+
+              <div class="data-pane active" id="data-pane-employees">
+                <form id="employee-form" class="ops-form compact-form">
+                  <input id="employee-name" type="text" placeholder="Name" required />
+                  <input id="employee-area" type="text" placeholder="Bereich" value="Verkauf" />
+                  <input id="employee-role" type="text" placeholder="Rolle" value="Verkäufer" />
+                  <input id="employee-contact-target" type="number" placeholder="Kontaktziel" />
+                  <input id="employee-sales-target" type="number" placeholder="Verkaufsziel" />
+                  <button class="primary-button" type="submit">Speichern</button>
+                </form>
+                <label class="upload-field">Mitarbeiter-CSV hochladen
+                  <input id="employee-csv" type="file" accept=".csv,text/csv" />
+                </label>
+              </div>
+
+              <div class="data-pane" id="data-pane-targets">
+                <form id="target-form" class="ops-form compact-form">
+                  <input id="target-month" type="month" required />
+                  <select id="target-seller" required></select>
+                  <input id="target-contacts" type="number" placeholder="Kontaktziel" />
+                  <input id="target-sales" type="number" placeholder="Verkaufsziel" />
+                  <button class="primary-button" type="submit">Speichern</button>
+                </form>
+                <label class="upload-field">Ziel-CSV hochladen
+                  <input id="target-csv" type="file" accept=".csv,text/csv" />
+                </label>
+              </div>
+
+              <div class="data-pane" id="data-pane-kpis">
+                <form id="kpi-data-form" class="kpi-editor">
+                  <div class="kpi-editor-grid">
+                    <label>Bereich
+                      <select id="kpi-data-area" aria-label="Bereich"></select>
+                    </label>
+                    <label>Kennzahl
+                      <select id="kpi-data-metric" aria-label="Kennzahl"></select>
+                    </label>
+                    <label>Ist aktuell
+                      <input id="kpi-data-actual" type="text" placeholder="z. B. 68400" />
+                    </label>
+                    <label>Monatsziel
+                      <input id="kpi-data-target" type="text" placeholder="z. B. 250000" />
+                    </label>
+                    <label>Einheit
+                      <select id="kpi-data-unit" aria-label="Einheit">
+                        <option value="">Zahl</option>
+                        <option value="€">Euro</option>
+                        <option value="%">Prozent</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="form-actions">
+                    <button class="primary-button" type="submit">KPI speichern</button>
+                  </div>
+                </form>
+                <div class="upload-card">
+                  <div>
+                    <strong>KPI-CSV hochladen</strong>
+                    <span>Spalten: Bereich, Kennzahl, Ist, Monatsziel, Einheit</span>
+                  </div>
+                  <input id="kpi-csv" type="file" accept=".csv,text/csv" />
+                </div>
+                <div id="kpi-data-table" class="data-table-wrap"></div>
+              </div>
+
+              <div class="data-pane" id="data-pane-results">
+                <form id="result-form" class="ops-form compact-form">
+                  <input id="result-date" type="date" required />
+                  <select id="result-seller" required></select>
+                  <input id="result-contacts" type="number" placeholder="Kontakte" />
+                  <input id="result-leads" type="number" placeholder="Leads" />
+                  <input id="result-offers" type="number" placeholder="Angebote" />
+                  <input id="result-testdrives" type="number" placeholder="Probefahrten" />
+                  <input id="result-sales" type="number" placeholder="Abschlüsse" />
+                  <button class="primary-button" type="submit">Eintragen</button>
+                </form>
+              </div>
+
+              <div class="data-pane" id="data-pane-import">
+                <div class="import-panel">
+                  <div class="section-heading compact-heading">
+                    <div>
+                      <h2>Excel- und CSV-Import</h2>
+                      <span>Erst prüfen, dann in App und Google-Tabelle übernehmen.</span>
+                    </div>
+                  </div>
+                  <div class="import-grid">
+                    <label>Datentyp
+                      <select id="import-type">
+                        <option value="kpis">KPI-Werte</option>
+                        <option value="results">Verkaufsergebnisse</option>
+                        <option value="employees">Mitarbeiter</option>
+                        <option value="targets">Ziele Verkäufer</option>
+                        <option value="inventory">Fahrzeugbestand</option>
+                        <option value="workshop">Werkstatt</option>
+                      </select>
+                    </label>
+                    <label>Datei
+                      <input id="import-file" type="file" accept=".csv,.xlsx,.xls,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" />
+                    </label>
+                    <button id="import-apply" class="primary-button" type="button" disabled>Import übernehmen</button>
+                  </div>
+                  <div class="hint-box">
+                    CSV oder Excel mit Kopfzeile. Die App erkennt deutsche und technische Spaltennamen, z. B. Bereich/Kennzahl/Ist/Monatsziel oder Fahrzeug/Standtage/Preis/Bilder.
+                  </div>
+                  <div id="import-preview" class="data-table-wrap import-preview"></div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Datenstand</h2>
+                  <span id="data-admin-status">lokal bereit</span>
+                </div>
+              </div>
+              <div id="data-admin-preview" class="compact-list"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="kpi-input-view" class="view">
+          <div class="kpi-input-layout">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>KPI-Eingabe</h2>
+                  <span>Ist-Werte und Monatsziele nach Autohausbereich</span>
+                </div>
+              </div>
+              <div id="kpi-input-tabs" class="kpi-area-tabs"></div>
+              <form id="kpi-bulk-form" class="kpi-bulk-form">
+                <div id="kpi-bulk-fields" class="kpi-bulk-fields"></div>
+                <div class="kpi-bulk-actions">
+                  <span id="kpi-input-hint">Werte werden lokal gespeichert und bei vorhandener Apps-Script-URL in Google Sheets geschrieben.</span>
+                  <button class="primary-button" type="submit">Bereich speichern</button>
+                </div>
+              </form>
+            </section>
+            <aside class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Datenstand</h2>
+                  <span id="kpi-input-status">bereit</span>
+                </div>
+              </div>
+              <div id="kpi-input-summary" class="compact-list"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="export-view" class="view">
+          <div class="sales-actions panel">
+            <div>
+              <h2>Export</h2>
+              <p>Daten aus der App als PDF, CSV oder XLS ausgeben.</p>
+            </div>
+          </div>
+          <div id="export-catalog" class="report-grid"></div>
+        </section>
+
+        <section id="google-view" class="view">
+          <div class="settings-grid">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Google Konto anbinden</h2>
+                  <span>Calendar und Tasks in beide Richtungen</span>
+                </div>
+              </div>
+              <form id="settings-form" class="settings-form">
+                <label>Google Konto
+                  <input id="google-account" type="email" value="operionix@gmail.com" />
+                </label>
+                <label>Google Apps Script Web-App URL
+                  <input id="script-url" type="url" placeholder="https://script.google.com/macros/s/.../exec" />
+                </label>
+                <label>Google Tasklist ID
+                  <input id="tasklist-id" type="text" placeholder="@default" />
+                </label>
+                <label class="settings-toggle">
+                  <input id="meeting-drive-backup" type="checkbox" />
+                  <span>
+                    <strong>Meetingprotokolle zusätzlich in Google Drive ablegen</strong>
+                    <small>Beim Öffnen eines PDFs wird eine dauerhafte Kopie im Drive-Ordner „Operative Steuerung – Meetingprotokolle“ gespeichert.</small>
+                  </span>
+                </label>
+                <div class="backup-setup-box">
+                  <div>
+                    <strong>Automatische Gesamtsicherung</strong>
+                    <small>Montags vollständiges Datenbackup, monatlich eine Kopie der gesamten Google-Tabelle.</small>
+                    <span id="backup-setup-status">Noch nicht über diese App eingerichtet</span>
+                  </div>
+                  <button id="setup-backup-button" class="ghost-button" type="button">Automatische Sicherung einrichten</button>
+                </div>
+                <div class="theme-settings">
+                  <span>Farbschema</span>
+                  <div id="theme-picker" class="theme-picker"></div>
+                </div>
+                <button class="primary-button" type="submit">Einstellungen speichern</button>
+              </form>
+            </section>
+            <section class="panel">
+              <h2>Einrichtung</h2>
+              <ol class="setup-list">
+                <li>Mit <strong>operionix@gmail.com</strong> in Google angemeldet sein.</li>
+                <li>In Google Tabellen eine neue Tabelle öffnen.</li>
+                <li>Erweiterungen → Apps Script öffnen.</li>
+                <li>Den Inhalt aus <strong>google-apps-script.js</strong> einfügen.</li>
+                <li>Als Web-App bereitstellen und die URL hier speichern.</li>
+                <li>Für To-dos den erweiterten Google Tasks Dienst im Apps Script aktivieren.</li>
+                <li>Für die optionale PDF-Ablage <strong>authorizeOnce</strong> erneut ausführen und den Google-Drive-Zugriff bestätigen.</li>
+                <li>Anschließend einmal auf <strong>Automatische Sicherung einrichten</strong> klicken.</li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script type="module" src="app.js?v=20260608-automatic-backup"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Standortleitung App-Icon</title>
+  <desc id="desc">Stilisiertes Fahrzeug in Graphit und Orange.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="900" y2="960" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/>
+      <stop offset="1" stop-color="#f1f3f5"/>
+    </linearGradient>
+    <linearGradient id="car" x1="250" y1="350" x2="790" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff922f"/>
+      <stop offset="1" stop-color="#ee6812"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="34" stdDeviation="30" flood-color="#202428" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect x="34" y="34" width="956" height="956" rx="226" fill="url(#bg)" stroke="#dce1e5" stroke-width="22"/>
+  <path d="M210 267h238" fill="none" stroke="#f47a20" stroke-width="58" stroke-linecap="round"/>
+  <path d="M210 360h132" fill="none" stroke="#2b3137" stroke-width="44" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <path d="M189 642h83l77-170c24-54 66-79 128-79h128c62 0 105 25 139 79l91 170h32c40 0 70 31 70 70v86H87v-86c0-39 30-70 70-70h32Z" fill="url(#car)"/>
+    <path d="M389 465h206c40 0 70 17 94 59l55 105H282l49-105c18-42 36-59 58-59Z" fill="#fff" opacity=".97"/>
+    <path d="M410 492h81v105H329l38-75c12-21 25-30 43-30Zm139 0h68c20 0 43 13 56 34l36 71H549V492Z" fill="#dce1e5"/>
+    <circle cx="303" cy="787" r="92" fill="#2b3137"/>
+    <circle cx="303" cy="787" r="35" fill="#fff"/>
+    <circle cx="721" cy="787" r="92" fill="#2b3137"/>
+    <circle cx="721" cy="787" r="35" fill="#fff"/>
+    <path d="M202 642h626" fill="none" stroke="#202428" stroke-width="28" stroke-linecap="round" opacity=".2"/>
+  </g>
+</svg>

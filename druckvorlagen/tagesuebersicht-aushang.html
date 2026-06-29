@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tagesübersicht Standortleitung</title>
+  <style>
+    :root {
+      --orange: #f47a20;
+      --orange-soft: #fff1e7;
+      --green: #6f9364;
+      --green-soft: #edf5eb;
+      --ink: #202428;
+      --muted: #66717a;
+      --line: #dce4db;
+      --paper: #ffffff;
+      --soft: #f6f8f5;
+      --shadow: 0 12px 26px rgba(32, 36, 40, .08);
+    }
+
+    * {
+      box-sizing: border-box;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    body {
+      margin: 0;
+      background: #e9eee8;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .poster {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 18px auto;
+      padding: 28px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(244, 122, 32, .09), transparent 28%),
+        linear-gradient(315deg, rgba(111, 147, 100, .08), transparent 34%),
+        var(--paper);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: auto -64px 42px auto;
+      width: 360px;
+      height: 54px;
+      border-radius: 999px;
+      background: repeating-linear-gradient(90deg, rgba(216, 225, 214, .65) 0 48px, transparent 48px 76px);
+      opacity: .32;
+      transform: rotate(-4deg);
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 3px solid var(--orange);
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      border: 1px solid color-mix(in srgb, var(--orange) 22%, var(--line));
+      background: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 18px rgba(32, 36, 40, .08);
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .eyebrow {
+      margin: 0 0 4px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 38px;
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .day-badge {
+      min-width: 176px;
+      padding: 15px 16px;
+      border-radius: 14px;
+      background: var(--green-soft);
+      border: 1px solid color-mix(in srgb, var(--green) 28%, var(--line));
+      text-align: right;
+    }
+
+    .day-badge strong {
+      display: block;
+      color: var(--green);
+      font-size: 24px;
+    }
+
+    .day-badge span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .motto {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      margin: 20px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .motto-card {
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .motto-card strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .motto-card span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .motto-card.fun {
+      background: var(--orange-soft);
+      border-color: color-mix(in srgb, var(--orange) 24%, var(--line));
+    }
+
+    .visual-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin: -4px 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .visual-note {
+      min-height: 74px;
+      padding: 13px 16px 13px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(111, 147, 100, .11), transparent 42%),
+        rgba(255, 255, 255, .86);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .visual-note::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: var(--green);
+    }
+
+    .visual-note::after {
+      content: attr(data-step);
+      position: absolute;
+      right: 14px;
+      top: 11px;
+      color: rgba(102, 113, 122, .18);
+      font-size: 34px;
+      font-weight: 850;
+      line-height: 1;
+    }
+
+    .visual-note.road {
+      background:
+        linear-gradient(90deg, rgba(244, 122, 32, .12), transparent 46%),
+        #fff;
+    }
+
+    .visual-note.road::before {
+      background: var(--orange);
+    }
+
+    .visual-note strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .visual-note span {
+      display: block;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.25;
+    }
+
+    .schedule {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .block {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 13px;
+      padding: 13px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 18px rgba(32, 36, 40, .045);
+    }
+
+    .block.highlight {
+      background: var(--green-soft);
+      border-color: color-mix(in srgb, var(--green) 28%, var(--line));
+    }
+
+    .time {
+      display: grid;
+      place-items: center;
+      align-self: stretch;
+      padding: 10px;
+      border-radius: 12px;
+      background: var(--soft);
+      color: var(--muted);
+      font-weight: 760;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .block.highlight .time {
+      background: #fff;
+      color: var(--green);
+    }
+
+    .content h2 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.12;
+    }
+
+    .content p {
+      margin: 5px 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chips span {
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #f3f5f2;
+      color: #53605a;
+      border: 1px solid #e1e8df;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .block.highlight .chips span {
+      background: #fff;
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .rule {
+      padding: 13px 14px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .rule b {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .rule span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .print-hint {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto 20px;
+      color: #66717a;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media print {
+      @page {
+        size: A3 landscape;
+        margin: 10mm;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .poster {
+        width: 100%;
+        margin: 0;
+        padding: 12mm;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .print-hint {
+        display: none;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .poster {
+        width: calc(100vw - 18px);
+        padding: 18px;
+      }
+
+      header,
+      .motto,
+      .visual-strip,
+      .schedule,
+      .footer {
+        grid-template-columns: 1fr;
+      }
+
+      .day-badge {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <header>
+      <div class="logo">
+        <img src="../assets/standort-logo.svg" alt="Standortleitung Logo" />
+      </div>
+      <div>
+        <p class="eyebrow">Tagesübersicht Standortleitung</p>
+        <h1>Ein guter Tag läuft nicht zufällig.</h1>
+        <div class="subtitle">Unser Tagesrhythmus: sehen, entscheiden, nachhalten, besser werden.</div>
+      </div>
+      <div class="day-badge">
+        <strong>07:30-18:00</strong>
+        <span>Mit Plan. Mit Präsenz. Mit Kaffee in Reichweite.</span>
+      </div>
+    </header>
+
+    <section class="motto" aria-label="Tagesmotto">
+      <div class="motto-card">
+        <strong>Was zählt heute?</strong>
+        <span>Kunden im Blick, Fahrzeuge im Griff, Werkstatt im Takt und Zahlen ohne Nebel.</span>
+      </div>
+      <div class="motto-card fun">
+        <strong>Kleine Regel des Hauses</strong>
+        <span>Wer ein Problem früh sieht, muss es später nicht dramatisch retten.</span>
+      </div>
+    </section>
+
+    <section class="visual-strip" aria-label="Tagesroute">
+      <div class="visual-note green" data-step="01">
+        <strong>Früh sehen</strong>
+        <span>Ein kurzer Rundgang spart lange Diskussionen.</span>
+      </div>
+      <div class="visual-note road" data-step="02">
+        <strong>Im Takt bleiben</strong>
+        <span>Meetings kurz, Entscheidungen klar, Nachhalten freundlich.</span>
+      </div>
+      <div class="visual-note" data-step="03">
+        <strong>Sauber landen</strong>
+        <span>Offene Punkte nicht verstecken, sondern auf morgen vorbereiten.</span>
+      </div>
+    </section>
+
+    <section class="schedule" aria-label="Tagesplan">
+      <article class="block highlight">
+        <div class="time">07:30<br />07:45</div>
+        <div class="content">
+          <h2>Betriebsrundgang: Frühe Lage</h2>
+          <p>Serviceannahme, Teile, Hof, Werkstatt, Sicherheit und Fahrzeuge einmal mit wachem Blick.</p>
+          <div class="chips"><span>Hofzustand</span><span>Service</span><span>Teile</span><span>Fahrzeuge</span><span>Sicherheit</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="time">07:45<br />08:05</div>
+        <div class="content">
+          <h2>Service/Werkstatt-Kurzmeeting</h2>
+          <p>Auslastung, Fehlteile, Reklamationen und Fertigstellungen sauber sortieren.</p>
+          <div class="chips"><span>Auslastung</span><span>Fehlteile</span><span>Expressfälle</span><span>Hebebühnen</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="time">08:30<br />08:45</div>
+        <div class="content">
+          <h2>Verkäufermeeting</h2>
+          <p>Tagesziele, Leads, Probefahrten, Auslieferungen und Langsteher auf den Tisch.</p>
+          <div class="chips"><span>Leads</span><span>Abschlüsse</span><span>Termine</span><span>Bestand</span><span>DB</span></div>
+        </div>
+      </article>
+
+      <article class="block highlight">
+        <div class="time">08:45<br />09:30</div>
+        <div class="content">
+          <h2>Zahlen & Steuerung</h2>
+          <p>DMS, Umsatz, Deckungsbeitrag, offene Rechnungen und Internetqualität prüfen.</p>
+          <div class="chips"><span>Umsatz</span><span>DB</span><span>Offene Punkte</span><span>Bilder</span><span>Preise</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="time">09:30<br />12:00</div>
+        <div class="content">
+          <h2>Operative Führung</h2>
+          <p>Kunden, Eskalationen, Freigaben, Coaching und Entscheidungen im laufenden Betrieb.</p>
+          <div class="chips"><span>Kunden</span><span>Eskalationen</span><span>Freigaben</span><span>Personal</span><span>Hersteller</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="time">12:00<br />13:00</div>
+        <div class="content">
+          <h2>Mittagsfenster & Betriebskontrolle</h2>
+          <p>Pause, kurzer Fortschrittsblick und sauberer Einstieg in den Nachmittag.</p>
+          <div class="chips"><span>Werkstattfortschritt</span><span>Teile</span><span>Auslieferungen</span><span>Sauberkeit</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="time">13:00<br />14:30</div>
+        <div class="content">
+          <h2>Strategische Themen</h2>
+          <p>Marketing, Recruiting, Prozesse, KPI, Digitalisierung und Gebrauchtwagensteuerung.</p>
+          <div class="chips"><span>Prozesse</span><span>KPI</span><span>Marketing</span><span>Digitalisierung</span><span>GW</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="time">14:30<br />15:30</div>
+        <div class="content">
+          <h2>Einzelgespräche / Coaching</h2>
+          <p>Kurze Wege, klare Ziele, ehrliches Feedback und praktische Verbesserung.</p>
+          <div class="chips"><span>Verkauf</span><span>Service</span><span>Lager</span><span>Aufbereitung</span><span>Dispo</span></div>
+        </div>
+      </article>
+
+      <article class="block highlight">
+        <div class="time">17:00<br />17:30</div>
+        <div class="content">
+          <h2>Tagesabschluss Steuerung</h2>
+          <p>Offene Fälle, Morgenplanung, Personal, Fahrzeugbewegungen und Terminlage.</p>
+          <div class="chips"><span>Offene Fälle</span><span>Morgen</span><span>Personal</span><span>Termine</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="time">17:30<br />18:00</div>
+        <div class="content">
+          <h2>Abschlussrundgang</h2>
+          <p>Sicherheit, Ordnung, IT, Licht, Tore, Alarm und Gefahrstoffe. Feierabend verdient man sich.</p>
+          <div class="chips"><span>Sicherheit</span><span>Ordnung</span><span>IT</span><span>Alarm</span><span>Tore</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="footer" aria-label="Leitsätze">
+      <div class="rule"><b>1. Früh sehen</b><span>Alles, was morgens auffällt, kostet nachmittags weniger Nerven.</span></div>
+      <div class="rule"><b>2. Kurz entscheiden</b><span>Klare Entscheidungen schlagen lange Schleifen.</span></div>
+      <div class="rule"><b>3. Freundlich bleiben</b><span>Professionell heißt nicht steif. Ein guter Betrieb darf gute Laune haben.</span></div>
+    </section>
+  </main>
+  <div class="print-hint">Zum Aushängen am besten im Browser öffnen und auf A3 quer oder A4 quer drucken.</div>
+</body>
+</html>

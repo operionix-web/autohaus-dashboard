@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 480" role="img" aria-labelledby="title">
+  <title id="title">Operative Steuerung Standortleitung</title>
+  <rect width="1600" height="480" rx="48" fill="#fff"/>
+  <g transform="translate(45 45) scale(.38)">
+    <path d="M210 267h238" fill="none" stroke="#f47a20" stroke-width="58" stroke-linecap="round"/>
+    <path d="M210 360h132" fill="none" stroke="#2b3137" stroke-width="44" stroke-linecap="round"/>
+    <path d="M189 642h83l77-170c24-54 66-79 128-79h128c62 0 105 25 139 79l91 170h32c40 0 70 31 70 70v86H87v-86c0-39 30-70 70-70h32Z" fill="#f47a20"/>
+    <path d="M389 465h206c40 0 70 17 94 59l55 105H282l49-105c18-42 36-59 58-59Z" fill="#fff"/>
+    <path d="M410 492h81v105H329l38-75c12-21 25-30 43-30Zm139 0h68c20 0 43 13 56 34l36 71H549V492Z" fill="#dce1e5"/>
+    <circle cx="303" cy="787" r="92" fill="#2b3137"/><circle cx="303" cy="787" r="35" fill="#fff"/>
+    <circle cx="721" cy="787" r="92" fill="#2b3137"/><circle cx="721" cy="787" r="35" fill="#fff"/>
+  </g>
+  <text x="495" y="205" fill="#202428" font-family="Arial, Helvetica, sans-serif" font-size="112" font-weight="700">Operative Steuerung</text>
+  <text x="500" y="305" fill="#68717a" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="400">Standortleitung im Autohaus</text>
+  <rect x="500" y="350" width="410" height="18" rx="9" fill="#f47a20"/>
+</svg>

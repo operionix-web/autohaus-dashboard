@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title">
+  <title id="title">Standortleitung Logo einfarbig</title>
+  <path d="M210 267h238M210 360h132" fill="none" stroke="#202428" stroke-width="54" stroke-linecap="round"/>
+  <path d="M189 642h83l77-170c24-54 66-79 128-79h128c62 0 105 25 139 79l91 170h32c40 0 70 31 70 70v86H87v-86c0-39 30-70 70-70h32Z" fill="#202428"/>
+  <path d="M389 465h206c40 0 70 17 94 59l55 105H282l49-105c18-42 36-59 58-59Z" fill="#fff"/>
+  <circle cx="303" cy="787" r="92" fill="#202428" stroke="#fff" stroke-width="28"/>
+  <circle cx="721" cy="787" r="92" fill="#202428" stroke="#fff" stroke-width="28"/>
+</svg>

@@ -1,0 +1,3 @@
+Bereich;Vorname;Nachname;Funktion;Kontaktziel;Verkaufsziel;active;deactivatedAt
+Verkauf;Max;Mustermann;Verkäufer;250;15;true;
+Werkstatt;Maria;Beispiel;Werkstattmeisterin;0;0;true;
